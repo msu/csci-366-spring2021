@@ -21,15 +21,15 @@ Next, you should add the class repository as an upstream git repo:
 
 ```bash
 $ git remote add upstream https://github.com/msu/csci-366-spring2021.git
-$ git pull upstream master
-$ git push origin master
+$ git pull upstream main
+$ git push origin main
 ```
 This will synchronize your private repository with the class repository.
 
 When you want to get an update from the public class repository you can run this command:
 
 ```
-$ git pull upstream master
+$ git pull upstream main
 ```
 
 ## Homeworks
