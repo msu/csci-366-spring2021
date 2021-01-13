@@ -1,0 +1,71 @@
+; ADD ONE
+
+        INP
+        ADD ONE
+        OUT
+        HLT
+ONE     DAT 1
+
+; TEN TO ONE
+
+        LDA TEN
+LOOP    BRZ EXIT
+        OUT
+        SUB ONE
+        BRA LOOP
+EXIT    HLT
+ONE     DAT 1
+TEN     DAT 10
+
+; MAX
+
+    INP
+    STA 99
+    INP
+    STA 98
+    SUB 99
+    BRP LOAD_2ND
+    LDA 99
+    BRA PRINT
+LOAD_2ND    LDA 98
+PRINT OUT
+    HLT
+
+; AQA ADD ONE
+
+    INP R0,2
+    ADD R0,R0,#1
+    OUT R0,4
+    HALT
+
+; AQA TEN TO ONE
+        MOV R0, #10
+LOOP:   CMP R0, #0
+        BEQ EXIT
+        OUT R0,4
+        SUB R0, R0, #1
+        B LOOP
+EXIT:    HALT
+
+; AQA ONE TO TEN
+
+        MOV R0, #1
+LOOP:   CMP R0, #11
+        BEQ EXIT
+        OUT R0,4
+        ADD R0, R0, #1
+        B LOOP
+EXIT:    HALT
+
+
+; AQA MAX
+
+    INP R0,2
+    INP R1,2
+    CMP R0, R1
+    BGT PRINT_0
+    OUT R1,4
+    B EXIT
+PRINT_0:
+    OUT R0,4
+EXIT: HALT
