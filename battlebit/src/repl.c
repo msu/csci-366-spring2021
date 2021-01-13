@@ -54,7 +54,10 @@ void repl_execute_command(struct char_buff * buffer) {
             server_start();
         } else if(strcmp(command, "show") == 0) {
 
-            // work with repl_print_board
+            struct char_buff *boardBuffer = cb_create(2000);
+            repl_print_board(game_get_current(), atoi(arg1), boardBuffer);
+            printf("%s", boardBuffer->buffer);
+            cb_free(boardBuffer);
 
         } else if(strcmp(command, "reset") == 0) {
 
@@ -62,15 +65,24 @@ void repl_execute_command(struct char_buff * buffer) {
 
         } else if (strcmp(command, "load") == 0) {
 
-            // work with game_load_board
+            int player = atoi(arg1);
+            game_load_board(game_get_current(), player, arg2);
 
         } else if (strcmp(command, "fire") == 0) {
-
-            // work with game_fire
-
-        } else if (strcmp(command, "shortcut") == 0) {
-            // update player 1 to only have a single ship in position 0, 0
-            game_get_current()->players[1].ships = 1ull;
+            int player = atoi(arg1);
+            int x = atoi(arg2);
+            int y = atoi(arg3);
+            if (x < 0 || x >= BOARD_DIMENSION || y < 0 || y >= BOARD_DIMENSION) {
+                printf("Invalid coordinate: %i %i\n", x, y);
+            } else {
+                printf("Player %i fired at %i %i\n", player + 1, x, y);
+                int result = game_fire(game_get_current(), player, x, y);
+                if (result) {
+                    printf("  HIT!!!");
+                } else {
+                    printf("  Miss");
+                }
+            }
         } else {
             printf("Unknown Command: %s\n", command);
         }
