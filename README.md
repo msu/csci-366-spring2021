@@ -21,7 +21,7 @@ Next, you should add the class repository as an upstream git repo:
 
 ```bash
 $ git remote add upstream https://github.com/msu/csci-366-spring2021.git
-$ git pull upstream main
+$ git pull upstream master
 $ git push origin main
 ```
 This will synchronize your private repository with the class repository.
@@ -29,7 +29,7 @@ This will synchronize your private repository with the class repository.
 When you want to get an update from the public class repository you can run this command:
 
 ```
-$ git pull upstream main
+$ git pull upstream master
 ```
 
 ## Homeworks
@@ -42,6 +42,3 @@ You will implement a simplified, networked version of the gaming classic [Battle
 
 More information can be found in the `/battlebit` directory
 
-### TODO
-
-* figure out branching name issue
