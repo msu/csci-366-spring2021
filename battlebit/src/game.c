@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include "game.h"
 
-// STEP 10 - Synchronization: the GAME structure will be accessed by both players interacting
+// STEP 9 - Synchronization: the GAME structure will be accessed by both players interacting
 // asynchronously with the server.  Therefore the data must be protected to avoid race conditions.
 // Add the appropriate synchronization needed to ensure a clean battle.
 

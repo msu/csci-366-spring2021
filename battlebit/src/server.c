@@ -25,7 +25,7 @@ void init_server() {
 }
 
 int handle_client_connect(int player) {
-    // STEP 9 - This is the big one: you will need to re-implement the REPL code from
+    // STEP 8 - This is the big one: you will need to re-implement the REPL code from
     // the repl.c file, but with a twist: you need to make sure that a player only
     // fires when the game is initialized and it is there turn.  They can broadcast
     // a message whenever, but they can't just shoot unless it is their turn.
@@ -46,7 +46,7 @@ void server_broadcast(char_buff *msg) {
 }
 
 int run_server() {
-    // STEP 8 - implement the server code to put this on the network.
+    // STEP 7 - implement the server code to put this on the network.
     // Here you will need to initalize a server socket and wait for incoming connections.
     //
     // When a connection occurs, store the corresponding new client socket in the SERVER.player_sockets array
@@ -57,6 +57,6 @@ int run_server() {
 }
 
 int server_start() {
-    // STEP 7 - using a pthread, run the run_server() function asynchronously, so you can still
+    // STEP 6 - using a pthread, run the run_server() function asynchronously, so you can still
     // interact with the game via the command line REPL
 }
