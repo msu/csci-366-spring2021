@@ -11,6 +11,7 @@ In CSCI 366, all project work is done individually.  Please follow these instruc
     - Going to <https://github.com/new>
     - Enter the name `csci-366-spring2021-private`
     - Select `Private`
+    - DO NOT ADD A README.MD or .gitignore!
     - Navigate to the `Settings` -> `Manage Access` section
     - Add `1cg` as a collaborator
 
@@ -21,15 +22,15 @@ Next, you should add the class repository as an upstream git repo:
 
 ```bash
 $ git remote add upstream https://github.com/msu/csci-366-spring2021.git
-$ git pull upstream main
-$ git push origin main
+$ git pull upstream master
+$ git push
 ```
 This will synchronize your private repository with the class repository.
 
 When you want to get an update from the public class repository you can run this command:
 
 ```
-$ git pull upstream main
+$ git pull upstream master
 ```
 
 ## Homeworks
@@ -41,3 +42,4 @@ Each homework has it's own directory (`/homework_1`, `/homework_2`, etc.).  Plea
 You will implement a simplified, networked version of the gaming classic [BattleShip](https://en.wikipedia.org/wiki/Battleship_(game)).
 
 More information can be found in the `/battlebit` directory
+
