@@ -11,7 +11,7 @@ In CSCI 366, all project work is done individually.  Please follow these instruc
     - Going to <https://github.com/new>
     - Enter the name `csci-366-spring2021-private`
     - Select `Private`
-    - DO NOT ADD A README.MD or .gitignore!
+    - **DO NOT ADD A README.MD or .gitignore!**
     - Navigate to the `Settings` -> `Manage Access` section
     - Add `1cg` as a collaborator
 
