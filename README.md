@@ -11,6 +11,7 @@ In CSCI 366, all project work is done individually.  Please follow these instruc
     - Going to <https://github.com/new>
     - Enter the name `csci-366-spring2021-private`
     - Select `Private`
+    - DO NOT ADD A README.MD or .gitignore!
     - Navigate to the `Settings` -> `Manage Access` section
     - Add `1cg` as a collaborator
 
@@ -22,7 +23,7 @@ Next, you should add the class repository as an upstream git repo:
 ```bash
 $ git remote add upstream https://github.com/msu/csci-366-spring2021.git
 $ git pull upstream master
-$ git push origin main
+$ git push
 ```
 This will synchronize your private repository with the class repository.
 
