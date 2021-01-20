@@ -10,20 +10,27 @@
 
 struct char_buff * cb_create(int size) {
     struct char_buff * char_buff = malloc(sizeof(struct char_buff));
-    // TODO initialize
+    char_buff->buffer = malloc(sizeof(char) * (size + 1));
+    char_buff->size = size;
+    char_buff->buffer[char_buff->size] = '\0'; // null terminate end as well
+    char_buff->buffer[0] = '\0'; // null terminate
+    char_buff->append_offset = 0;
     return char_buff;
 }
 
 int cb_append(struct char_buff * buffer, const char * str) {
     long content_len = (long) strlen(str);
-    // TODO
-    return 0;
+    char *append_point = buffer->buffer + buffer->append_offset;
+    long limit = buffer->size - buffer->append_offset;
+    strncpy(append_point, str, limit);
+    buffer->append_offset += (content_len > limit ? limit : content_len);
 }
 
 int cb_append_int(struct char_buff * buffer, int arg) {
     char *append_point = buffer->buffer + buffer->append_offset;
-    // TODO
-    return 0;
+    long limit = buffer->size - buffer->append_offset;
+    int len = snprintf(append_point, limit, "%i", arg);
+    buffer->append_offset += (len > limit ? limit : len);
 }
 
 void cb_print(struct char_buff * buffer) {
