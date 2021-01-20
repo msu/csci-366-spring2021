@@ -18,7 +18,7 @@ A battleBit board is specified as follows:
 * The numbers indicate the X and Y position of the start of the ship 
 * A capital letter indicates that the ship is oriented horizontially, starting at the X, Y postion
 * A lower case letter indicates that the ship is oriented vertically, starting at the X, Y position
-* By convention, 0, 0 is the upper left position in the board, and 7,7 is the lower left
+* By convention, 0, 0 is the upper left position in the board, and 7,7 is the lower right
   * So the top row would consist of the positions (0, 0), (1, 0), (2, 0), ..., (7,0)
 
 An example of a board specifications is:
