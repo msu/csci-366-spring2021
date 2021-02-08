@@ -52,10 +52,11 @@ void bitshift_demo() {
 
 void demo_bitshift_plus_and() {
     unsigned int value = 1023;
-    unsigned int n = 9;
+    unsigned int n = 10;
     unsigned int mask = 1u << n;
     print_binary_int(value);
     print_binary_int(mask);
+    print_binary_int(mask & value);
     if (mask & value) {
         printf("Yep! That bit was 1\n");
     }
@@ -153,35 +154,3 @@ int main() {
 
 
 
-
-
-
-
-
-
-
-void print_binary_int(unsigned int num) {
-    printf("0b");
-    unsigned int i = 32;
-    do {
-        i--;
-        printf("%d", (num & (1ull << i)) != 0);
-        if (i % 4 == 0) {
-            printf(" ");
-        }
-    } while (i != 0);
-    printf("\n");
-}
-
-void print_binary_short(unsigned short num) {
-    printf("0b");
-    unsigned int i = 16;
-    do {
-        i--;
-        printf("%d", (num & (1ull << i)) != 0);
-        if (i % 4 == 0) {
-            printf(" ");
-        }
-    } while (i != 0);
-    printf("\n");
-}

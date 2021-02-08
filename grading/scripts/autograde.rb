@@ -86,23 +86,6 @@ end
 # =====================================================================
 
 case ARGV[0]
-when "accept_pull_requests"
-  puts("Accepting Pull Requests")
-  puts("------------------")
-  repo = client.repo(class_repo_name)
-  client.pull_requests(repo[:id]).each do |pr|
-    puts "  Merging #{pr[:id]} - #{pr[:number]}: #{pr[:head][:repo][:full_name]}"
-    client.merge_pull_request(repo[:id], pr[:number])
-  end
-when "init_repos"
-  for_each_student_dir do |first, last|
-    puts "Initializing repo for #{first} #{last}"
-    if grading_dir_exist?
-      puts "Repo already initialized..."
-    else
-      puts `git pull #{class_repo_url} master;`
-    end
-  end
 when "accept_invites"
   puts("Accepting Repository Invites")
   puts("------------------")
@@ -114,7 +97,7 @@ when "grade"
   assignment = ARGV[1]
   filter = ARGV[2]
   case assignment
-  when "project"
+  when "hwk2"
     for_each_student_dir do |first, last, dir|
       if filter and not "#{first} #{last}".downcase.include?(filter.downcase)
         next
@@ -122,17 +105,17 @@ when "grade"
       puts "Grading #{assignment} for #{first} #{last} in #{dir}"
       pull
       make_grading_dir
-      if not Dir.exist? 'battlebit'
+      if not Dir.exist? 'homework_2'
         next
       end
-      Dir.chdir 'battlebit' do
-        cmake "../grading/project_results.txt"
-        maybe_exec "./googletest/battleBit_tests", "../grading/project_results.txt"
+      Dir.chdir 'homework_2' do
+        cmake "../grading/homework_2_results.txt"
+        maybe_exec "./homework_2", "../grading/homework_2_results.txt"
       end
       push_grading
     end
   else
-    puts "Unknown assignment: #{assignment} (expected homework_4, project)"
+    puts "Unknown assignment: #{assignment} (expected hwk2)"
   end
 when "clone_repos"
   each_student do |student|
@@ -140,7 +123,7 @@ when "clone_repos"
     if Dir.exist? student_dir
       puts "Directory #{student_dir} already exists, skipping..."
     else
-      repo_url = student["REPO"]
+      repo_url = student["REPO"].gsub("https://", "")
       if repo_url.nil? || repo_url.strip.empty?
         puts("No git URL for #{student["FIRST_NAME"]} #{student["LAST_NAME"]}")
         next
@@ -149,7 +132,7 @@ when "clone_repos"
     end
   end
 when "clear_repos"
-  `rm -rf repos`
+  `rm -rf repos/*`
 else
   puts "Commands:
     accept_invites - accepts pending invites

@@ -15,9 +15,9 @@ void funny(int i) {
 }
 
 void func_3() {
-    register int x = 12;
+    static int x = 12;
     x++;
-    printf("x is %d", x);
+    printf("x is %d\n", x);
 }
 
 #include "string.h"
