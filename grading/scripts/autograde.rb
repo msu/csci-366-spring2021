@@ -114,6 +114,23 @@ when "grade"
       end
       push_grading
     end
+  when "proj1"
+    for_each_student_dir do |first, last, dir|
+      if filter and not "#{first} #{last}".downcase.include?(filter.downcase)
+        next
+      end
+      puts "Grading #{assignment} for #{first} #{last} in #{dir}"
+      pull
+      make_grading_dir
+      if not Dir.exist? 'homework_2'
+        next
+      end
+      Dir.chdir 'battlebit' do
+        cmake "../grading/project_1_results.txt"
+        maybe_exec "./googletest/battleBit_checkpoint1", "../grading/project_1_results.txt"
+      end
+      push_grading
+    end
   else
     puts "Unknown assignment: #{assignment} (expected hwk2)"
   end

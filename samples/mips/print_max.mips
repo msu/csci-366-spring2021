@@ -1,0 +1,38 @@
+.text
+
+main:
+  li $v0, 4 # print string
+  la $a0, enter
+  syscall
+
+  li $v0, 5 # read int
+  syscall
+
+  move $t0, $v0 # save to temp
+
+  li $v0, 4 # print string
+  la $a0, enter
+  syscall
+
+  li $v0, 5 # read int
+  syscall
+
+  bgt $t0, $v0, skip
+  move $t0, $v0 # v0 is greater
+ skip:
+
+  li $v0, 4 # print string
+  la $a0, max
+  syscall
+
+    li $v0, 1 # print int
+  move $a0, $t0
+  syscall
+
+  li $v0, 10  # exit
+  syscall
+
+.data
+enter:	.asciiz	"Enter a number: "
+max:	.asciiz	"Max: "
+

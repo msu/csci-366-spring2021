@@ -2,6 +2,8 @@
 
 int my_int_function(int *pointer_to_int);
 
+void pass_by_value_demo();
+
 void pointer_fun_1() {
     int i = 10;
     int *pointer_to_i = &i;
@@ -48,13 +50,6 @@ void show_array_2() {
 }
 
 void show_array_3() {
-    int int_arr[4];
-    for (int i = 0; i < 4; ++i) {
-        printf("Value: %d\n", int_arr[i]);
-    }
-}
-
-void show_array2() {
     int int_arr[4] = {0};
     for (int i = 0; i < 4; ++i) {
         printf("Value: %d\n", int_arr[i]);
@@ -66,7 +61,8 @@ void pointers_and_arrays() {
     int *int_ptr = int_arr;
     for (int i = 0; i < 3; ++i) {
         printf("Value from arr: %d\n", int_arr[i]);
-        printf("Value from ptr: %d\n", *(int_ptr++));
+        printf("Value from ptr: %d\n", *int_ptr);
+        int_ptr++;
     }
 }
 
@@ -116,8 +112,14 @@ void read_file(){
 }
 
 int main() {
-//    pointers_and_arrays();
-    strtok_example();
+    pass_by_value_demo();
 
+}
+
+void pass_by_value_demo() {
+    struct demo s;
+    s.value = 10;
+    update_it4(&s);
+    printf("Value: %d\n", s.value);
 }
 

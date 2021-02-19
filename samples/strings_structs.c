@@ -5,7 +5,8 @@
 void string_ptr_fun_1() {
     char *str = "Hello, Strings!";
     for (int i = 0; i < 15; ++i) {
-        printf("Char at %d is %c\n", i, *(str + i));
+        printf("Char at %d is %c\n", i, *str);
+        str++;
     }
 }
 

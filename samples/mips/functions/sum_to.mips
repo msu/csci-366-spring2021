@@ -1,0 +1,23 @@
+.text
+
+main:
+  li $a0, 100
+  jal sum_to
+
+  move $a0, $v0 # save the value
+  li $v0, 1 # print int
+  syscall
+
+  li $v0, 10  # exit
+  syscall
+  
+sum_to:
+  li $t0, 0
+loop:
+  blez $a0, done
+  add $t0, $t0, $a0
+  subi $a0, $a0, 1
+  j loop
+done:
+  move $v0, $t0
+  jr $ra
