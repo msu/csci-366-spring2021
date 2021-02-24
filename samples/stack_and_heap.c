@@ -18,23 +18,24 @@ void recursive_func(int i) {
 void stack_overflow(int i) {
     printf("i is %d\n", i);
     int *i_address = &i;
+    int buff[i];
     printf("i address is %u\n", i_address);
     if (i_address > 0) {
-        stack_overflow(i - 1);
+        stack_overflow(i + 1);
     } else {
         printf("i is %d\n", i);
         printf("i address is %u\n", i_address);
     }
 }
 
-void malloc_free_example() {
+char * malloc_free_example(int size) {
     char *static_string = "Hello, Malloc";
     printf("static_string address is %u\n", &static_string);
-    char *str_buff = malloc(15 * (sizeof(char)));
+    char *str_buff = malloc(size * (sizeof(char)));
     printf("str_buff address is %u\n", &str_buff);
     strcpy(str_buff, static_string);
     printf("%s", str_buff);
-    free(str_buff);
+    return str_buff;
 }
 
 void malloc_underallocate_free_example() {
@@ -68,14 +69,14 @@ void no_free_example() {
     no_free_example();
 }
 
-void calloc_example() {
+char * calloc_example() {
     char *static_string = "Hello, Calloc";
     printf("static_string address is %u\n", &static_string);
     char *str_buff = calloc(16, (sizeof(char)));
     printf("str_buff address is %u\n", &str_buff);
     strcpy(str_buff, static_string);
     printf("%s\n", str_buff);
-    free(str_buff);
+    return str_buff;
 }
 
 void memset_example() {
@@ -113,6 +114,6 @@ void brk_fun() {
 
 
 int main() {
-    brk_fun();
+    stack_overflow(1);
     return 0;
 }

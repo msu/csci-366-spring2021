@@ -86,7 +86,7 @@ void server_demo() {
         puts("Bind failed");
     } else {
         puts("Bind worked!");
-        listen(server_socket_fd, 88);
+        listen(server_socket_fd, 3);
 
         //Accept an incoming connection
         puts("Waiting for incoming connections...");
