@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 void cast_demo() {
     int i;
     double x = 1.9;
@@ -9,6 +10,16 @@ void cast_demo() {
 void arr_demo() {
     int arr[] = {1, 2, 3};
     printf("Yay %i", arr[3]);
+}
+struct example {
+    int value;
+};
+
+void example() {
+    struct example x;
+    struct example *y = malloc(sizeof(struct example));
+    x.value = 10;
+    y->value = 20;
 }
 
 void arr_factorial() {
@@ -31,7 +42,7 @@ void if_demo() {
 }
 
 int main() {
-    if_demo();
+    example();
     return 0;
 }
 
